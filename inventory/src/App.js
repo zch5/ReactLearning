@@ -1,22 +1,37 @@
 import './App.css';
+import { PropTypes } from "prop-types"; 
 import Info from "./Info"
 
 function App() {
   return (
     <div className="App">
-        <Info />
-        <AddItem />
+        <Info title="Inventory" />
+        <AddItem text="Zach"/>
+        <AddItem text="Ralph" number={99}/>
     </div>
   );
 }
 
-function AddItem() {
+
+function AddItem({text = "no name", number}) {
+  const value = text;
+
   return (
-    <div>
+    <form>
       <label for="text-form">Type something: </label>
-      <input type="text" id="text-form"/>
-    </div>
+      <input type="text" value={value} id="text-form"/>
+      <p>{number}</p>
+    </form>
   )
 }
+
+AddItem.defaultProps = {
+  number: 2
+};
+
+AddItem.propTypes = {
+  number: PropTypes.number,
+  text: PropTypes.string,
+};
 
 export default App;
