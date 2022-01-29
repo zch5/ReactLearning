@@ -3,6 +3,8 @@ import SearchBar from "./SearchBar";
 import AddItem from "./AddItem";
 import { useState } from "react";
 import ItemsDisplay from "./ItemsDisplay";
+//mport 'bootstrap/dist/css/bootstap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [filters, setFilters ] = useState({});
@@ -21,10 +23,16 @@ function App() {
   };
   
   return (
-    <div className="App">
-      <SearchBar updateSearchParams={updateFilters} />
-      <ItemsDisplay items={data["items"]} />
-      <AddItem addItem={addItemToData}/>
+    <div className="container">
+      <div className='row mt-3'>
+        <ItemsDisplay items={data["items"]} />
+      </div>
+      <div className='row mt-3'>
+        <SearchBar updateSearchParams={updateFilters} />
+      </div>
+      <div className='row mt-3'>
+        <AddItem addItem={addItemToData}/>
+      </div>
     </div>
   );
 }   
